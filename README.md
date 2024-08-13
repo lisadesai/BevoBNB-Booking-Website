@@ -10,5 +10,5 @@ The purpose of this project was to develop a travel lodging website with functio
 **Back-end:** **C#** **MVC** with **Microsoft Azure SQL Database**.  
 **Hosting:** Deployed on **Micrososft Azure** with **Identity and Access Management (IAM)** fully integrated into the app for login and security purposes. 
 
-If you are curious, here is a full spec sheet of what the project requirements were, from start to finish!  
+If you are curious, I have uploaded a full spec sheet of what the project requirements were, from start to finish! (specs.pdf)
 
