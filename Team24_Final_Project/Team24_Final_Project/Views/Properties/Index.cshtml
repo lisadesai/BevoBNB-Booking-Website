@@ -1,0 +1,205 @@
+﻿@model IEnumerable<Team24_Final_Project.Models.Property>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 style="color:darkviolet">Find your home away from home!</h1>
+
+@*@if (User.Identity.IsAuthenticated && User.IsInRole("Host"))
+    {
+        <p>
+            <a asp-action="Create">Create New</a>
+        </p>
+    }*@
+
+<div class="text-success">Displaying @ViewBag.SelectedProperties of @ViewBag.AllProperties properties.</div>
+
+<form asp-action="Index" asp-controller="Properties" method="get">
+    <p class="form-group">
+
+        <a asp-action="DetailedSearch" class="btn btn-success">Detailed Search</a>
+        <a asp-action="Index" class="btn btn-danger">Show All</a>
+    </p>
+</form>
+
+@if (User.IsInRole("Host"))
+{
+    <a class="btn btn-success" asp-action="Create">Create New Property</a>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyNumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.Zip)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyAddress)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.ApartmentNumber)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.WeekdayPrice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.WeekendPrice)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.DiscountRate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.DaysToDiscount)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.HostEmail)
+                </th>*@
+            @*<th>
+                    @Html.DisplayNameFor(model => model.CleaningFee)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfBedrooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NumberOfBathrooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.GuestRating)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.PetsAllowed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FreeParking)
+                </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.GuestLimit)
+            </th>
+            @*<th>
+                    @Html.DisplayNameFor(model => model.PropertyStatus)
+                </th>*@
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyNumber)
+                </td>
+                <th>
+                    @Html.DisplayFor(model => item.Category.CategoryName)
+                </th>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Zip)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.State)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PropertyAddress)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.ApartmentNumber)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.WeekdayPrice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.WeekendPrice)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.DiscountRate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DaysToDiscount)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.HostEmail)
+                    </td>*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.CleaningFee)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfBedrooms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NumberOfBathrooms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GuestRating)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.PetsAllowed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FreeParking)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.GuestLimit)
+                </td>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.PropertyStatus)
+                    </td>*@
+            <td>
+                @*@if (User.Identity.IsAuthenticated && User.IsInRole("Host"))
+        {
+        <a asp-action="Edit" asp-route-id="@item.PropertyID">Edit</a>
+        <span>|</span>
+
+        }*@
+                <a asp-action="Edit" asp-route-id="@item.PropertyID">Edit</a> |
+
+                <a asp-action="Details" asp-route-id="@item.PropertyID">Details</a> |
+
+                <a asp-controller="Reservations" asp-action="Book" asp-route-id="@item.PropertyID">Book</a>
+
+                @if (User.IsInRole("Host"))
+                {
+                    <a asp-controller="Reservation" asp-action="Book">Black Out Days</a>
+                    <span></span>
+
+                    @if (item.PropertyStatus == PropertyStatusEnum.Active)
+                    {
+                        <a asp-action="Deactivate" class="btn btn-danger" asp-route-id="@item.PropertyID">Deactivate</a>
+
+                    }
+
+                    @if (item.PropertyStatus == PropertyStatusEnum.Inactive)
+                    {
+                        <a asp-action="Activate" class="btn btn-success" asp-route-id="@item.PropertyID">Activate</a>
+                    }
+
+                }
+
+                @if (User.IsInRole("Admin"))
+                {
+                    @if (item.PropertyStatus == PropertyStatusEnum.Pending)
+                    {
+                        <a asp-action="Approve" class="btn btn-success" asp-route-id="@item.PropertyID">Approve</a>
+                        <a asp-action="Deny" class="btn btn-danger" asp-route-id="@item.PropertyID">Deny</a>
+                    }
+                }
+
+            </td>
+            </tr>
+        }
+    </tbody>
+</table>

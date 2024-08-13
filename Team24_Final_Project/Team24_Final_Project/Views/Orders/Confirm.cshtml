@@ -1,0 +1,15 @@
+﻿@model Team24_Final_Project.Models.Order
+
+@{
+    ViewData["Title"] = "Confirm";
+}
+
+<h1>Thank You for Your Reservation with BevoBnB</h1>
+
+<p>Send email to: @Html.DisplayFor(model => model.User.Email)</p>
+
+<p>Order Confirmation Number: @Html.DisplayFor(model => model.OrderNumber)</p>
+
+<p>Order Status: @Html.DisplayFor(model => model.Status)</p>
+
+<a class="btn btn-primary" asp-controller="Home" asp-action="Index">Take me home</a>

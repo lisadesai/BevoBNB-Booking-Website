@@ -1,0 +1,60 @@
+﻿@model Team24_Final_Project.Models.Order
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Order</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="OrderID" />
+            <div class="form-group">
+                <label asp-for="OrderNumber" class="control-label"></label>
+                @Html.DisplayFor(Model => Model.OrderNumber, new { @class = "form-control" })
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="User.Email" class="control-label"></label>
+                @Html.DisplayFor(Model => Model.User.Email, new { @class = "form-control" })
+            </div>
+            <br />
+            <br />
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<br />
+<h5>Properties on this Order</h5>
+<table class="table table-primary">
+    <tr>
+        <th>Property Address</th>
+        <th>Check-In Date</th>
+        <th>Check-Out Date</th>
+        <th>Stay Price</th>
+        <th>Reservation Status</th>
+    </tr>
+    @foreach (Reservation res in Model.Reservations)
+    {
+        <tr>
+            <td>@Html.DisplayFor(ModelItem => res.Property.PropertyAddress)</td>
+            <td>@Html.DisplayFor(ModelItem => res.CheckInDate)</td>
+            <td>@Html.DisplayFor(ModelItem => res.CheckOutDate)</td>
+            <td>@Html.DisplayFor(ModelItem => res.TotalStayPrice)</td>
+            <td>@Html.DisplayFor(ModelItem => res.Status)</td>
+        </tr>
+    }
+</table>
+<br />
+<div>
+    <a asp-action="Index" class="btn btn-info">Back to List</a>
+    <a asp-action="DetailedSearch" asp-controller="Properties" asp-route-orderID="@Model.OrderID" class="btn btn-warning">Add to Order</a>
+    <a asp-action="Index" asp-controller="Reservations" asp-route-orderID="@Model.OrderID" class="btn btn-danger">See All Reservations</a>
+</div>
+

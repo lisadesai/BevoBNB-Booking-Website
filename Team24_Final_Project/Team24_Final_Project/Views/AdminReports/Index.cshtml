@@ -1,0 +1,42 @@
+﻿@model Team24_Final_Project.Models.AdminSearchViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Report Index</h1>
+
+<div>
+    <hr />
+    <dl class="row">
+        <dt class='col-sm-2'>
+            @Html.DisplayNameFor(model => model.TotalCommissions)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.TotalCommissions)
+        </dd>
+        <dt class='col-sm-2'>
+            @Html.DisplayNameFor(model => model.NumberOfReservations)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumberOfReservations)
+        </dd>
+        <dt class='col-sm-2'>
+            @Html.DisplayNameFor(model => model.AverageCommission)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.AverageCommission)
+        </dd>
+        <dt class='col-sm-2'>
+            @Html.DisplayNameFor(model => model.NumberOfProperties)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumberOfProperties)
+        </dd>
+    </dl>
+</div>
+<br />
+<div>
+    <a class="btn btn-success" asp-action="Create">New Report</a>
+    <a class="btn btn-warning" asp-controller="Home" asp-action="Index">Back Home</a>
+</div>

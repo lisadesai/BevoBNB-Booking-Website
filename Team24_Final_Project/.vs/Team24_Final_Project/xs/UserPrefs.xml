@@ -1,0 +1,30 @@
+﻿<Properties StartupConfiguration="{27F4695E-A2A7-4A41-8456-4D6D9F95A19B}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Team24_Final_Project/Models/ViewModels/AccountViewModels.cs">
+    <Files>
+      <File FileName="Team24_Final_Project/Models/ViewModels/AccountViewModels.cs" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Team24_Final_Project" expanded="True">
+            <Node name="Team24_Final_Project" expanded="True">
+              <Node name="Models" expanded="True">
+                <Node name="ViewModels" expanded="True">
+                  <Node name="AccountViewModels.cs" selected="True" />
+                </Node>
+              </Node>
+              <Node name="Views" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Team24__Final__Project PreferredExecutionTarget="/System/Volumes/Preboot/Cryptexes/App/System/Applications/Safari.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

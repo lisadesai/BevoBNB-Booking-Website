@@ -1,0 +1,150 @@
+﻿@model Team24_Final_Project.Models.Property
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Property</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PropertyNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PropertyNumber)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Category.CategoryName)   
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Zip)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Zip)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.State)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.State)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PropertyAddress)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PropertyAddress)
+        </dd>
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ApartmentNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ApartmentNumber)
+        </dd>*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WeekdayPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WeekdayPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.WeekendPrice)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.WeekendPrice)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DiscountRate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DiscountRate)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DaysToDiscount)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DaysToDiscount)
+        </dd>
+        @*<dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HostEmail)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HostEmail)
+        </dd>*@
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CleaningFee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CleaningFee)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumberOfBedrooms)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumberOfBedrooms)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.NumberOfBathrooms)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.NumberOfBathrooms)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GuestRating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GuestRating)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PetsAllowed)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PetsAllowed)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FreeParking)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FreeParking)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.GuestLimit)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.GuestLimit)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PropertyStatus)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PropertyStatus)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-controller="Reservations" asp-action="Book" class="btn btn-success" asp-route-id="@Model.PropertyID">Book Now!</a>
+    @if (User.Identity.IsAuthenticated)
+    {
+        @if (User.IsInRole("Customer") || User.IsInRole("Host"))
+        {
+            <a asp-controller="Reviews" asp-action="Create" class="btn btn-info" asp-route-propertyID="@Model.PropertyID">Leave a Review!</a>
+        }
+    }
+
+</div>
+
+<div>
+    <a asp-action="Edit" asp-route-propertyID="@Model.PropertyID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

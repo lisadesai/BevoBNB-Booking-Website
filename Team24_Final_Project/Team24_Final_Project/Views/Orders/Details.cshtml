@@ -1,0 +1,123 @@
+﻿@model Team24_Final_Project.Models.Order
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+@if (User.IsInRole("Customer"))
+{
+    <div>
+        <h4>Order</h4>
+        <hr />
+        <dl class="row">
+            <dt class='col-sm-2'>
+                @Html.DisplayNameFor(model => model.User.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.Email)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.OrderSubtotal)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.OrderSubtotal)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.OrderTotal)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.OrderTotal)
+            </dd>
+        </dl>
+    </div>
+    <br />
+    <h5>Reservations on this Order</h5>
+    <table class="table table-primary">
+        <tr>
+            <th>Property Address</th>
+            <th>Check-In Date</th>
+            <th>Check-Out Date</th>
+            <th>Reservation Cost</th>
+            <th>Reservation Status</th>
+        </tr>
+        @foreach (Reservation res in Model.Reservations)
+        {
+            <tr>
+                <td>@Html.DisplayFor(ModelItem => res.Property.PropertyAddress)</td>
+                <td>@Html.DisplayFor(ModelItem => res.CheckInDate)</td>
+                <td>@Html.DisplayFor(ModelItem => res.CheckOutDate)</td>
+                <td>@Html.DisplayFor(ModelItem => res.ResSubtotal)</td>
+                <td>@Html.DisplayFor(ModelItem => res.Status)</td>
+            </tr>
+        }
+    </table>
+    <br />
+    @*<table class="table table-sm table-bordered" style="width:30%">
+
+        <tr>
+            <th colspan="2" style="text-align:center">Order Summary</th>
+        </tr>
+        <tr>
+            <td>Order Subtotal:</td>
+            <td>@Html.DisplayFor(model => model.OrderSubtotal)</td>
+        </tr>
+        <tr>
+            <td>Sales Tax:</td>
+            <td>@Html.DisplayFor(model => model.SalesTax)</td>
+        </tr>
+        <tr>
+            <td>Order Total:</td>
+            <td>@Html.DisplayFor(model => model.OrderTotal) </td>
+        </tr>
+
+    </table>
+    <br />*@
+    <div>
+        <a class="btn btn-success" asp-action="Checkout" asp-route-id="@Model.OrderID">Checkout</a>
+    </div>
+    <br />
+    <div>
+        <a class="btn btn-danger" asp-action="Edit" asp-route-id="@Model.OrderID">Edit</a> |
+        <a class="btn btn-warning" asp-action="Index">Back to List</a>
+    </div>
+}
+
+@if (User.IsInRole("Host"))
+{
+    <div>
+        <h4>Order</h4>
+        <hr />
+        <dl class="row">
+            <dt class='col-sm-2'>
+                @Html.DisplayNameFor(model => model.User.Email)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.User.Email)
+            </dd>
+        </dl>
+    </div>
+    <br />
+    <h5>Black Outs for this Property</h5>
+    <table class="table table-primary">
+        <tr>
+            <th>Property Address</th>
+            <th>Black Out Start Date</th>
+            <th>Black Out End Date</th>
+        </tr>
+        @foreach (Reservation res in Model.Reservations)
+        {
+            <tr>
+                <td>@Html.DisplayFor(ModelItem => res.Property.PropertyAddress)</td>
+                <td>@Html.DisplayFor(ModelItem => res.CheckInDate)</td>
+                <td>@Html.DisplayFor(ModelItem => res.CheckOutDate)</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <div>
+        <a class="btn btn-danger" asp-action="Edit" asp-route-id="@Model.OrderID">Edit</a> |
+        <a class="btn btn-warning" asp-action="Index">Back to List</a>
+    </div>
+}
+

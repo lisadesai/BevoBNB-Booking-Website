@@ -1,0 +1,40 @@
+﻿@* { Layout = null;} *@
+
+<!DOCTYPE html>
+<html>
+@{
+    ViewData["Title"] = "Home";
+}
+
+<p>
+
+</p>
+<head>
+    <h1 class="text-center" style="font-family:Georgia;" >Welcome to BevoBnB!&trade;</h1>
+</head>
+<body>
+
+    <br />
+    <div class="text-center">
+        <div class="btn-group-md">
+
+            @if (User.IsInRole("Host") == false)
+            {
+                <a asp-controller="Properties" asp-action="Index" class="btn btn-info">View Our Properties</a>
+
+            }
+            <!--<a asp-controller="Orders" asp-action="Index" class="btn btn-danger">Book an Order</a>-->
+            @if (User.Identity.IsAuthenticated)
+            {
+                @if (User.IsInRole("Customer"))
+                {
+
+                    <a asp-controller="Reservations" asp-action="CustomerReservations" class="btn btn-warning">See My Reservations</a>
+
+                }
+            }
+        </div>
+    </div>
+    
+</body>
+</html>

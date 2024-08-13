@@ -1,0 +1,41 @@
+﻿@model Team24_Final_Project.Models.Reservation
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Reservation</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReservationID" />
+            <div class="form-group">
+                <label asp-for="CheckInDate" class="control-label"></label>
+                @Html.DisplayFor(Model => Model.CheckInDate, new { @class = "form-control" })
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="CheckOutDate" class="control-label"></label>
+                @Html.DisplayFor(Model => Model.CheckOutDate, new { @class = "form-control" })
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="CancelByDate" class="control-label"></label>
+                @Html.DisplayFor(Model => Model.CancelByDate, new { @class = "form-control" })
+            </div>
+            <br />
+            <div class="form-group"> <!--change to button to take to separate acition method-->
+                <a class="btn btn-danger" asp-controller="Reservations" asp-action="Cancel" asp-route-id="@Model.ReservationID">Cancel</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-orderID="@Model.Order.OrderID">Back to List</a>
+</div>
+

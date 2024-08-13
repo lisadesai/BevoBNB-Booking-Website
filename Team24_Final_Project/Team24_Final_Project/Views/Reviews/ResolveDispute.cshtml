@@ -1,0 +1,60 @@
+﻿@model Team24_Final_Project.Models.Review
+
+@{
+    ViewData["Title"] = "Resolve Dispite";
+}
+
+<h1>Resolve Dispute</h1>
+
+<h4>Review</h4>
+<hr />
+
+@*display info that the host will respond to*@
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.CustomerComment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.CustomerComment)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rating)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rating)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.HostResponse )
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.HostResponse)
+        </dd>
+    </dl>
+</div>
+
+
+<h2>Do you accept or reject this dispute?</h2>
+<h3>Check to accept the dispute, siding with the host. Uncheck to reject the dispute, siding with the customer. </h3>
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="ResolveDispute">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ReviewID" />
+
+            
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="AcceptReject" /> @Html.DisplayNameFor(model => model.AcceptReject)
+                </label>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

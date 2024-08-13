@@ -1,0 +1,70 @@
+﻿@model IEnumerable<Team24_Final_Project.Models.Property>
+
+@{ 
+    ViewData["Title"] = "Index";
+}
+
+<h1>Host Report</h1>
+
+<p><strong>Total Reservations:</strong> @ViewBag.HostReservations</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.City)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.State)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PropertyAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.CategoryName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EarnedRevenue)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalCleaningFees)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TotalPropertyRevenue)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.State)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PropertyAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EarnedRevenue)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalCleaningFees)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TotalPropertyRevenue)
+                    </td>
+                </tr>
+            }
+    </tbody>
+</table>
+<br />
+<div>
+    <a class="btn btn-success" asp-action="Create">New Report</a>
+    <a class="btn btn-warning" asp-controller="Home" asp-action="Index">Back Home</a>
+</div>

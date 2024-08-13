@@ -1,0 +1,10 @@
+﻿@model Team24_Final_Project.Models.Reservation
+
+
+<h1>Error</h1>
+
+<p>Oops - something went wrong.</p>
+
+<p>There is already a reservation booked for this data range. Please try again.</p>
+
+<a asp-action="Create" asp-controller="Reservations" asp-route-orderID="@Model.Order.OrderID" class="btn btn-success">Try Again</a>

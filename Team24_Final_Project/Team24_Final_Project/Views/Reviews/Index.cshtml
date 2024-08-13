@@ -1,0 +1,76 @@
+﻿@model IEnumerable<Team24_Final_Project.Models.Review>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Reviews</h1>
+
+@*<p>
+    <a asp-action="Create">Create New</a>
+</p>*@
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerComment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.HostResponse)
+            </th>
+            @*<th>
+                @Html.DisplayNameFor(model => model.UserEmail)
+            </th>*@
+            <th>
+                @Html.DisplayNameFor(model => model.DisputeStatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rating)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CustomerComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.HostResponse)
+            </td>
+            @*<td>
+                @Html.DisplayFor(modelItem => item.UserEmail)
+            </td>*@
+            <td>
+                @Html.DisplayFor(modelItem => item.DisputeStatus)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.ReviewID">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.ReviewID">Details</a> |
+                <!--<a asp-action="Delete" asp-route-id="@item.ReviewID">Delete</a> |-->
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.IsInRole("Host"))
+                    {
+                        <a asp-action="Dispute" asp-route-id="@item.ReviewID">Dispute</a>
+                    }
+                }
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="ResolveDispute" asp-route-id="@item.ReviewID">Resolve Dispute</a>
+                    }
+                }
+
+            </td>
+            </tr >
+}
+</tbody>
+</table>

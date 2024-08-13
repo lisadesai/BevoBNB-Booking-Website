@@ -1,0 +1,77 @@
+﻿@model Team24_Final_Project.Models.Order
+
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+
+<div>
+    <h4>Order</h4>
+    <hr />
+    <dl class="row">
+        <dt class='col-sm-2'>
+            @Html.DisplayNameFor(model => model.User.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.User.Email)
+        </dd>
+    </dl>
+</div>
+<br />
+<h5>Reservations on this Order</h5>
+<table class="table table-primary">
+    <tr>
+        <th>City</th>
+        <th>State</th>
+        <th>Check-In Date</th>
+        <th>Check-Out Date</th>
+        <th>Number of Guests</th>
+        <th>Stay Price</th>
+        <th>Cleaning Fee</th>
+        <th>Discount Amount</th>
+        <th>Subtotal</th>
+        <th>Reservation Total</th>
+        <th>Reservation Status</th>
+    </tr>
+    @foreach (Reservation res in Model.Reservations)
+    {
+        <tr>
+            <td>@Html.DisplayFor(ModelItem => res.Property.City)</td>
+            <td>@Html.DisplayFor(ModelItem => res.Property.State)</td>
+            <td>@Html.DisplayFor(ModelItem => res.CheckInDate)</td>
+            <td>@Html.DisplayFor(ModelItem => res.CheckOutDate)</td>
+            <td>@Html.DisplayFor(ModelItem => res.NumberOfGuests)</td>
+            <td>@Html.DisplayFor(ModelItem => res.TotalStayPrice)</td>
+            <td>@Html.DisplayFor(ModelItem => res.CleaningFee)</td>
+            <td>@Html.DisplayFor(ModelItem => res.DiscountAmt)</td>
+            <td>@Html.DisplayFor(ModelItem => res.ResSubtotal)</td>
+            <td>@Html.DisplayFor(ModelItem => res.IndResTotal)</td>
+            <td>@Html.DisplayFor(ModelItem => res.Status)</td>
+        </tr>
+    }
+</table>
+<br />
+<table class="table table-sm table-bordered" style="width:30%">
+
+    <tr>
+        <th colspan="2" style="text-align:center">Order Summary</th>
+    </tr>
+    <tr>
+        <td>Order Subtotal:</td>
+        <td>@Html.DisplayFor(model => model.OrderSubtotal)</td>
+    </tr>
+    <tr>
+        <td>Sales Tax:</td>
+        <td>@Html.DisplayFor(model => model.SalesTax)</td>
+    </tr>
+    <tr>
+        <td>Order Total:</td>
+        <td>@Html.DisplayFor(model => model.OrderTotal) </td>
+    </tr>
+
+</table>
+<br />
+<div>
+    <a class="btn btn-success" asp-action="Confirm" asp-route-id="@Model.OrderID">Confirm</a> 
+</div>

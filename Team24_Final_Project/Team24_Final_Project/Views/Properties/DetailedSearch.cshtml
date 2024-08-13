@@ -1,0 +1,169 @@
+@model Team24_Final_Project.Models.ViewModels.PropertySearchViewModel
+
+@using Team24_Final_Project.Models.ViewModels
+
+
+@{ ViewData["Title"] = "Detailed Search"; }
+
+<h1>Detailed Search</h1>
+
+<h4>Property Search View Model</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="DisplaySearchResults">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+            <label asp-for="SelectedCheckInDate" class="control-label"></label>
+            <input asp-for="SelectedCheckInDate" class="form-control" />
+            <span asp-validation-for="SelectedCheckInDate" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="SelectedCheckOutDate" class="control-label"></label>
+            <input asp-for="SelectedCheckOutDate" class="form-control" />
+            <span asp-validation-for="SelectedCheckOutDate" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <label asp-for="SelectedCheckInDate" class="control-label"></label>
+                <input asp-for="SelectedCheckInDate" class="form-control" />
+                <span asp-validation-for="SelectedCheckInDate" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="SelectedCheckOutDate" class="control-label"></label>
+                <input asp-for="SelectedCheckOutDate" class="form-control" />
+                <span asp-validation-for="SelectedCheckOutDate" class="text-danger"></span>
+            </div>
+            <br />
+            <div class="form-group">
+                <label asp-for="SelectedCategory" class="control-label"></label>
+                @Html.DropDownListFor(model => model.SelectedCategory, (SelectList)ViewBag.AllCategories, new { @class = "form-control" })
+                <span asp-validation-for="SelectedCategory" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedAddress" class="control-label"></label>
+                <input asp-for="SelectedAddress" class="form-control" />
+                <span asp-validation-for="SelectedAddress" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedCity" class="control-label"></label>
+                <input asp-for="SelectedCity" class="form-control" />
+                <span asp-validation-for="SelectedCity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedState" class="control-label"></label>
+                <input asp-for="SelectedState" class="form-control" />
+                <span asp-validation-for="SelectedState" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+            <label asp-for="SelectedState" class="control-label"></label>
+            <select asp-for="SelectedState" asp-items="Html.GetEnumSelectList<StateEnum>()" class="form-control">
+                <option selected="selected" value="">All States</option>
+            </select>
+            <span asp-validation-for="SelectedState" class="text-danger"></span>
+        </div>*@
+            <div class="form-group">
+                <label asp-for="SelectedWeekdayPrice" class="control-label"></label>
+                <input asp-for="SelectedWeekdayPrice" class="form-control" />
+                <span asp-validation-for="SelectedWeekdayPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeekdaySelectedType" class="control-label"></label><br />
+                <input type="radio" class="radio" asp-for="WeekdaySelectedType" value="@SearchType.LessThan" /> Less Than<br />
+                <input type="radio" class="radio" asp-for="WeekdaySelectedType" value="@SearchType.GreaterThan" /> Greater Than<br />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SelectedWeekendPrice" class="control-label"></label>
+                <input asp-for="SelectedWeekendPrice" class="form-control" />
+                <span asp-validation-for="SelectedWeekendPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="WeekendSelectedType" class="control-label"></label><br />
+                <input type="radio" class="radio" asp-for="WeekendSelectedType" value="@SearchType.LessThan" /> Less Than<br />
+                <input type="radio" class="radio" asp-for="WeekendSelectedType" value="@SearchType.GreaterThan" /> Greater Than<br />
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SelectedGuestRating" class="control-label"></label>
+                <input asp-for="SelectedGuestRating" class="form-control" />
+                <span asp-validation-for="SelectedGuestRating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuestRatingSelectedType" class="control-label"></label><br />
+                <input type="radio" class="radio" asp-for="GuestRatingSelectedType" value="@SearchType.LessThan" /> Less Than<br />
+                <input type="radio" class="radio" asp-for="GuestRatingSelectedType" value="@SearchType.GreaterThan" /> Greater Than<br />
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedBedrooms" class="control-label"></label>
+                <input asp-for="SelectedBedrooms" class="form-control" />
+                <span asp-validation-for="SelectedBedrooms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BedroomsSelectedType" class="control-label"></label><br />
+                <input type="radio" class="radio" asp-for="BedroomsSelectedType" value="@SearchType.LessThan" /> Less Than<br />
+                <input type="radio" class="radio" asp-for="BedroomsSelectedType" value="@SearchType.GreaterThan" /> Greater Than<br />
+            </div>
+
+            @*<div class="form-group">
+            <label asp-for="MinSelectedBedrooms" class="control-label"></label>
+            <input asp-for="MinSelectedBedrooms" class="form-control" />
+            <span asp-validation-for="MinSelectedBedrooms" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BedroomsMinSelectedType" class="control-label"></label><br />
+            <input type="radio" class="radio" asp-for="BedroomsMinSelectedType" value="@SearchType.LessThan" /> Less Than<br />
+            <input type="radio" class="radio" asp-for="BedroomsMinSelectedType" value="@SearchType.GreaterThan" /> Greater Than<br />
+        </div>
+        <div class="form-group">
+            <label asp-for="MaxSelectedBedrooms" class="control-label"></label>
+            <input asp-for="MaxSelectedBedrooms" class="form-control" />
+            <span asp-validation-for="MaxSelectedBedrooms" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="BedroomsMaxSelectedType" class="control-label"></label><br />
+            <input type="radio" class="radio" asp-for="BedroomsMaxSelectedType" value="@SearchType.LessThan" /> Less Than<br />
+            <input type="radio" class="radio" asp-for="BedroomsMaxSelectedType" value="@SearchType.GreaterThan" /> Greater Than<br />
+        </div>*@
+
+            <div class="form-group">
+                <label asp-for="SelectedBathrooms" class="control-label"></label>
+                <input asp-for="SelectedBathrooms" class="form-control" />
+                <span asp-validation-for="SelectedBathrooms" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BathroomsSelectedType" class="control-label"></label><br />
+                <input type="radio" class="radio" asp-for="BathroomsSelectedType" value="@SearchType.LessThan" /> Less Than<br />
+                <input type="radio" class="radio" asp-for="BathroomsSelectedType" value="@SearchType.GreaterThan" /> Greater Than<br />
+            </div>
+            <div class="form-group">
+                <label asp-for="SelectedGuests" class="control-label"></label>
+                <input asp-for="SelectedGuests" class="form-control" />
+                <span asp-validation-for="SelectedGuests" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="GuestsNumberSelectedType" class="control-label"></label><br />
+                <input type="radio" class="radio" asp-for="GuestsNumberSelectedType" value="@SearchType.LessThan" /> Less Than<br />
+                <input type="radio" class="radio" asp-for="GuestsNumberSelectedType" value="@SearchType.GreaterThan" /> Greater Than<br />
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="SelectedPetsAllowed" /> @Html.DisplayNameFor(model => model.SelectedPetsAllowed)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="SelectedFreeParking" /> @Html.DisplayNameFor(model => model.SelectedFreeParking)
+                </label>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
