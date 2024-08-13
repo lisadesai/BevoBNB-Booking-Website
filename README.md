@@ -1,13 +1,14 @@
-# fa21team24finalproject
+# BevoBnB
 
-This is a great place to do things like:
-- List features you need to complete
-- Claim features to work on
-  - ex. "Allow user to search properties by price **@YourName**"
-- ~~Strikethrough~~ completed items to feel good
+Note: This project was designed for MIS 333K (web-application development). I took this course in Fall 2021.
 
-Alternatively, you can go the traditional route & use the README to document your team's Git/naming conventions.
+## Goal: 
+The purpose of this project was to develop a travel lodging website with functionality for guests, hosts and administrators. This project spanned the course of 2 months, and included functionality such as: detailed search and filter, role-based access management, profile and account creation, reservation/booking creation/deletion, password encryption, reviewing functionality for properties, listing and managing properties capability, admin reporting and user/reservation management, to name a few! This was a group project and I developed this app with my teammate. 
 
-Side note: plz manage your code changes with branches, especially if you're coding different features simultaneously.  The updated guide is here: [Getting Started with Git](https://docs.google.com/document/d/1JCmHccq2WOZCHx98B95oSjZNzr3cS3Vil2ePiM81OBk/edit?usp=sharing)
+## Stack: 
+**Front-end:** **C#** using **ASP.NET Core** framework using a MVC setup.  
+**Back-end:** **C#** **MVC** with **Microsoft Azure SQL Database**.  
+**Hosting:** Deployed on **Micrososft Azure** with **Identity and Access Management (IAM)** fully integrated into the app for login and security purposes. 
 
-[Formatting README text](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax#links)
+If you are curious, here is a full spec sheet of what the project requirements were, from start to finish!  
+
